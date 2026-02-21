@@ -131,6 +131,7 @@ import { copyPlugin } from "./plugins/copy.js";
 import { commentPlugin } from "./plugins/comment.js";
 import { openPlugin } from "./plugins/open.js";
 import { copyHtmlPlugin } from "./plugins/copy-html.js";
+import { devtoolsPanelPlugin } from "./plugins/devtools-panel.js";
 import { screenshotPlugin } from "./plugins/screenshot.js";
 import {
   freezeAnimations,
@@ -156,6 +157,7 @@ const builtInPlugins = [
   copyPlugin,
   commentPlugin,
   copyHtmlPlugin,
+  devtoolsPanelPlugin,
   screenshotPlugin,
   openPlugin,
 ];

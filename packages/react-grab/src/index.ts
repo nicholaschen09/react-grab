@@ -6,6 +6,7 @@ export {
   DEFAULT_THEME,
 } from "./core/index.js";
 export { commentPlugin } from "./core/plugins/comment.js";
+export { devtoolsPanelPlugin } from "./core/plugins/devtools-panel.js";
 export { openPlugin } from "./core/plugins/open.js";
 export { generateSnippet } from "./utils/generate-snippet.js";
 export {
