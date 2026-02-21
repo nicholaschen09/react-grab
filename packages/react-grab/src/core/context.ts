@@ -17,6 +17,7 @@ import {
   type Fiber,
 } from "bippy";
 import {
+  PREVIEW_CLASS_MAX_LENGTH,
   PREVIEW_TEXT_MAX_LENGTH,
   PREVIEW_ATTR_VALUE_MAX_LENGTH,
   PREVIEW_MAX_ATTRS,
@@ -379,6 +380,13 @@ interface GetElementContextOptions {
   maxLines?: number;
 }
 
+const getClassesLine = (element: Element): string => {
+  const value = element.getAttribute("class");
+  if (!value || !value.trim()) return "";
+  const truncated = truncateString(value.trim(), PREVIEW_CLASS_MAX_LENGTH);
+  return `\n\nClasses: ${truncated}`;
+};
+
 const hasSourceFiles = (stack: StackFrame[] | null): boolean => {
   if (!stack) return false;
   return stack.some(
@@ -465,7 +473,7 @@ export const getElementContext = async (
       }
     }
 
-    return `${html}${stackContext.join("")}`;
+    return `${html}${getClassesLine(element)}${stackContext.join("")}`;
   }
 
   const componentNames = getComponentNamesFromFiber(element, maxLines);
@@ -473,7 +481,7 @@ export const getElementContext = async (
     const componentContext = componentNames
       .map((name) => `\n  in ${name}`)
       .join("");
-    return `${html}${componentContext}`;
+    return `${html}${getClassesLine(element)}${componentContext}`;
   }
 
   return getFallbackContext(element);

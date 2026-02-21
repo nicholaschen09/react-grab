@@ -29,6 +29,19 @@ test.describe("Element Context Fallback", () => {
       expect(clipboard).toContain("React Grab");
     });
 
+    test("should include Tailwind/CSS classes in clipboard for React elements", async ({
+      reactGrab,
+    }) => {
+      await reactGrab.activate();
+
+      await reactGrab.hoverElement("[data-testid='main-title']");
+      await reactGrab.waitForSelectionBox();
+      await reactGrab.clickElement("[data-testid='main-title']");
+
+      const clipboard = await reactGrab.getClipboardContent();
+      expect(clipboard).toContain("Classes: text-2xl font-bold");
+    });
+
     test("should include nested component names for deeply nested elements", async ({
       reactGrab,
     }) => {

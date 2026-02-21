@@ -741,11 +741,17 @@ export const init = (rawOptions?: Options): ReactGrabAPI => {
       }
       let instanceId = existingInstanceId ?? null;
       if (!instanceId && bounds && tagName) {
-        instanceId = createLabelInstance(bounds, tagName, componentName, "copying", {
-          element,
-          mouseX: positionX,
-          elements,
-        });
+        instanceId = createLabelInstance(
+          bounds,
+          tagName,
+          componentName,
+          "copying",
+          {
+            element,
+            mouseX: positionX,
+            elements,
+          },
+        );
       }
 
       let didSucceed = false;

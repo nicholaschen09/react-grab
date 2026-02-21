@@ -71,6 +71,8 @@ export const PREVIEW_PRIORITY_ATTRS: readonly string[] = [
   "title",
 ];
 
+export const PREVIEW_CLASS_MAX_LENGTH = 800;
+
 export const SCREENSHOT_CAPTURE_DELAY_MS = 50;
 
 export const SYMBOLICATION_TIMEOUT_MS = 5000;
